@@ -63,27 +63,30 @@ python3 podcast_transcribe.py "https://..." --output-dir ./my-output
 
 三个引擎按优先级自动 fallback，至少配置一个即可使用：
 
-| 引擎 | 中文质量 | 速度 | 免费额度 | 是否需要代理 |
-|------|---------|------|---------|------------|
-| **通义听悟**（推荐） | ⭐⭐⭐⭐⭐ | 中等 | 每月 3 小时 | 不需要 |
-| **Groq Whisper** | ⭐⭐⭐⭐ | 快 | 每天约 2 小时 | 需要 |
-| **Cohere Transcribe** | ⭐⭐⭐ | 中等 | 每月 10 小时 | 不需要 |
+| 引擎 | 中文质量 | 速度 | 免费额度 | 有效期 | 是否需要代理 |
+|------|---------|------|---------|--------|------------|
+| **通义听悟**（推荐） | ⭐⭐⭐⭐⭐ | 中等 | 每天 2 小时（文件转录） | 90 天试用 | 不需要 |
+| **Groq Whisper** | ⭐⭐⭐⭐ | 快 | 每天 8 小时 | 永久免费 | 需要 |
+| **Cohere Transcribe** | ⭐⭐⭐ | 中等 | 每月 1000 次请求 | 永久免费 | 不需要 |
 
 ### 申请方式
 
-**通义听悟**（阿里云）
+**通义听悟**（阿里云） — 中文最佳，90 天试用每天 2 小时
 1. 访问 [通义听悟控制台](https://tingwu.aliyun.com)，开通服务
 2. 获取 `TINGWU_APP_KEY`
 3. 在 [RAM 控制台](https://ram.console.aliyun.com/manage/ak) 获取 AccessKey
 4. （audio_to_inbox.py 需要）在 [OSS 控制台](https://oss.console.aliyun.com) 创建 Bucket
+5. 需要阿里云账号（中国手机号注册）
 
-**Groq Whisper**
-1. 访问 [Groq Console](https://console.groq.com)，注册账号
+**Groq Whisper** — 永久免费，每天 8 小时
+1. 访问 [Groq Console](https://console.groq.com)，用邮箱或 GitHub 注册
 2. 在 API Keys 页面创建 Key
+3. 无需信用卡
 
-**Cohere Transcribe**
+**Cohere Transcribe** — 永久免费，每月 1000 次
 1. 访问 [Cohere Dashboard](https://dashboard.cohere.com)，注册账号
-2. 在 API Keys 页面获取 Key
+2. 注册后自动获得 Trial API Key
+3. 无需信用卡
 
 ## 支持的播客平台
 
