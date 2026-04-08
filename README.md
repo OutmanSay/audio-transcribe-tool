@@ -2,7 +2,7 @@
 
 播客和录音转文字工具 | Transcribe podcasts and audio recordings to text
 
-支持多种播客平台和音频格式，三引擎自动 fallback，可选 AI 生成学习简报。
+支持多种播客平台和音频格式，三引擎自动 fallback，可选 AI 生成结构化笔记 / 会议纪要。
 
 ## 功能
 
@@ -13,9 +13,13 @@
 - **本地录音转录** (`audio_to_inbox.py`)：本地音频文件转录 + AI 整理
   - 支持 .m4a / .mp3 / .wav 等常见格式
   - 自动判断类型（会议/聊天/语音笔记）并生成结构化 Markdown
+  - **🆕 会议模式**：自动检测会议 / 多人对话，输出末尾追加完整原文供审计回看
+  - **🆕 Path B 回填模式**：`--from-text` 或 `--scan` 直接处理手动导出的 `_原文.md`
   - `--transcribe-only` 模式：只输出原始文本
 - **三引擎自动 fallback**：通义听悟 > Groq Whisper > Cohere Transcribe
 - **长音频自动分段**：>10 分钟自动切分，支持断点续传
+
+👉 **会议模式 / 手动回填模式的完整说明：[MEETING_MODE.md](./MEETING_MODE.md)**
 
 ## 快速开始
 
@@ -49,8 +53,17 @@ python3 podcast_transcribe.py "https://www.xiaoyuzhoufm.com/episode/xxx"
 # 播客转录 + AI 学习简报
 python3 podcast_transcribe.py "https://www.xiaoyuzhoufm.com/episode/xxx" --brief
 
-# 本地录音转录
+# 本地录音转录（自动 ASR + AI 整理）
 python3 audio_to_inbox.py /path/to/recording.m4a
+
+# 已有手动转录文件（如通义听悟网页版导出的 _原文.md），跳过 ASR 直接整理
+python3 audio_to_inbox.py --from-text /path/to/transcript_原文.md
+
+# 自动扫描 ~/Downloads 和 $TRANSCRIPT_INBOX_DIR 里最新的 _原文.md
+python3 audio_to_inbox.py --scan
+
+# 强制会议模式（输出末尾追加完整原文）
+python3 audio_to_inbox.py recording.m4a --meeting
 
 # 只转录不整理
 python3 audio_to_inbox.py /path/to/recording.m4a --transcribe-only
@@ -129,6 +142,7 @@ python3 podcast_transcribe.py "https://..." --output-dir ./my-output
 | `PODCAST_PROXY` | HTTP 代理 | - |
 | `TRANSCRIPT_OUTPUT_DIR` | 输出目录 | `./output` |
 | `TRANSCRIPT_NOTES_DIR` | 笔记输出目录（可选） | - |
+| `TRANSCRIPT_INBOX_DIR` | `--scan` 模式额外扫描的目录（通常指向你的 Obsidian inbox） | - |
 
 ## License
 
