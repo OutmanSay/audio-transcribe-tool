@@ -1,6 +1,27 @@
 # audio-transcribe-tool
 
-播客和录音转文字工具 | Transcribe podcasts and audio recordings to text
+> 🧠 **AI Agent Skill** — Let your agent transcribe recordings, meetings, and podcasts end-to-end.
+> Works with [OpenClaw](https://github.com/openclaw/openclaw) · [Claude Code](https://claude.com/claude-code) · [Codex CLI](https://github.com/openai/codex) · and any agent runtime that can shell out.
+
+播客和录音转文字工具 + **会议纪要智能整理**（含 ASR 人名纠错、手动转录回填）| Transcribe podcasts and audio recordings to text, with optional meeting-minutes formatting and contact-book name correction.
+
+## What's this?
+
+这是一个 **AI agent skill**：一个让 LLM 驱动的个人助手能通过自然语言调用的工具。
+
+例如跟你的 agent 说：
+- "帮我转录 Downloads 里刚才的录音"
+- "处理一下 inbox 里的会议原文"
+- "把这个小宇宙链接的播客做成学习简报"
+
+agent 就会自动调这个 skill 走完整流程：ASR → 质量检测 → 会议检测 → AI 整理（含通讯录 enrich）→ 写入你的 Obsidian inbox。
+
+**支持的 agent 运行时**：
+- [OpenClaw](https://github.com/openclaw/openclaw) —— 自托管多 agent 编排平台
+- [Claude Code](https://claude.com/claude-code) —— Anthropic 官方 CLI/IDE
+- 任何支持 shell 执行的 agent 框架（Cursor / Aider / Codex CLI / Gemini CLI / Continue / ...）
+
+**也能当 CLI 独立用**：不用 agent 直接在 terminal 里跑也可以，功能完全一样。
 
 支持多种播客平台和音频格式，三引擎自动 fallback，可选 AI 生成结构化笔记 / 会议纪要。
 
