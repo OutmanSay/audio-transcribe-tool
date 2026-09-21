@@ -1,4 +1,4 @@
-# audio-transcribe-tool
+# 🧠 AI Agent Skill: audio-transcribe-tool
 
 > 🧠 **AI Agent Skill** — Let your agent transcribe recordings, meetings, and podcasts end-to-end.
 > Works with [OpenClaw](https://github.com/openclaw/openclaw) · [Claude Code](https://claude.com/claude-code) · [Codex CLI](https://github.com/openai/codex) · and any agent runtime that can shell out.
